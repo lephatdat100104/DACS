@@ -1,0 +1,252 @@
+﻿@model DACS.Models.ViewModels.CareerTestResultViewModel
+
+@{
+    ViewData["Title"] = "Kết quả trắc nghiệm nghề nghiệp";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    :root {
+        --primary-color: #4CAF50; /* Green */
+        --secondary-color: #007bff; /* Blue */
+        --text-color: #333;
+        --bg-color: #f0f2f5;
+        --card-bg: #fff;
+        --shadow-light: rgba(0, 0, 0, 0.1);
+        --accent-color: #ffc107; /* Yellow for highlights */
+    }
+
+    body {
+        background-color: var(--bg-color);
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .result-wrapper {
+        max-width: 900px;
+        margin: 50px auto;
+        padding: 40px;
+        background-color: var(--card-bg);
+        border-radius: 25px;
+        box-shadow: 0 15px 40px var(--shadow-light);
+    }
+
+    .result-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+        .result-header h2 {
+            font-weight: 700;
+            color: var(--text-color);
+            position: relative;
+            display: inline-block;
+        }
+
+            .result-header h2::after {
+                content: '';
+                display: block;
+                width: 60%;
+                height: 4px;
+                background-color: var(--primary-color);
+                margin: 8px auto 0;
+                border-radius: 2px;
+            }
+
+    .dominant-type-card {
+        text-align: center;
+        padding: 30px;
+        background-color: #e8f5e9; /* Light green background */
+        border: 2px solid var(--primary-color);
+        border-radius: 20px;
+        margin-bottom: 30px;
+    }
+
+        .dominant-type-card h3 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+    .section-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--secondary-color);
+        margin-bottom: 20px;
+        border-left: 4px solid var(--secondary-color);
+        padding-left: 15px;
+    }
+
+    .suggestion-block {
+        background-color: #f8f9fa;
+        padding: 25px;
+        border-radius: 15px;
+        margin-bottom: 30px;
+        line-height: 1.8;
+    }
+
+    .resource-list {
+        list-style: none;
+        padding-left: 0;
+    }
+
+        .resource-list li {
+            margin-bottom: 10px;
+            transition: transform 0.2s ease;
+        }
+
+            .resource-list li:hover {
+                transform: translateX(5px);
+            }
+
+        .resource-list a {
+            color: var(--text-color);
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px dashed var(--secondary-color);
+            transition: color 0.2s ease;
+        }
+
+            .resource-list a:hover {
+                color: var(--secondary-color);
+            }
+
+    .university-table {
+        border-radius: 15px;
+        overflow: hidden;
+        border: 1px solid #e9ecef;
+    }
+
+        .university-table thead th {
+            background-color: #d1e7dd; /* Table header bg */
+            color: #0f5132;
+            font-weight: 600;
+            border: none;
+        }
+
+        .university-table tbody tr:nth-child(odd) {
+            background-color: #f8f9fa;
+        }
+
+        .university-table tbody tr:hover {
+            background-color: #e9ecef;
+        }
+
+    .btn-action {
+        padding: 12px 30px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .btn-primary-custom {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        color: #fff;
+    }
+
+        .btn-primary-custom:hover {
+            background-color: #45a049;
+            border-color: #45a049;
+            transform: translateY(-2px);
+        }
+
+    .btn-secondary-custom {
+        background-color: var(--secondary-color);
+        border-color: var(--secondary-color);
+        color: #fff;
+    }
+
+        .btn-secondary-custom:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+    .action-buttons {
+        text-align: center;
+        margin-top: 40px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+</style>
+
+<div class="result-wrapper">
+    <div class="result-header">
+        <h2>Kết quả trắc nghiệm nghề nghiệp</h2>
+    </div>
+
+    <div class="dominant-type-card">
+        <p class="mb-2 text-muted fw-bold">Loại tính cách nghề nghiệp chiếm ưu thế của bạn là:</p>
+        <h3 class="text-uppercase">@Model.DominantType</h3>
+    </div>
+
+    <div class="mb-4">
+        <h5 class="section-title">🎯 Ngành học / Nghề nghiệp phù hợp</h5>
+        <div class="suggestion-block">
+            <p class="lead">@Model.Suggestion</p>
+        </div>
+    </div>
+
+    @if (Model.Resources != null && Model.Resources.Split(',').Length > 0)
+    {
+        <div class="mb-4">
+            <h5 class="section-title">📚 Tài liệu & khóa học tham khảo</h5>
+            <ul class="resource-list">
+                @foreach (var resource in Model.Resources.Split(','))
+                {
+                    <li><a href="@resource.Trim()" target="_blank"><i class="bi bi-link-45deg me-2"></i>@resource.Trim()</a></li>
+                }
+            </ul>
+        </div>
+    }
+
+    <div class="mb-4">
+        <h5 class="section-title">🎓 Các trường đại học đào tạo phù hợp</h5>
+        @if (Model.UniversitySuggestions != null && Model.UniversitySuggestions.Any())
+        {
+            <div class="university-table">
+                <div class="table-responsive">
+                    <table class="table mb-0">
+                        <thead class="table-success">
+                            <tr>
+                                <th>Tên trường</th>
+                                <th>Ngành đào tạo</th>
+                                <th>Website</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var uni in Model.UniversitySuggestions)
+                            {
+                                <tr>
+                                    <td>@uni.UniversityName</td>
+                                    <td>@uni.Major</td>
+                                    <td><a href="@uni.Website" target="_blank" class="text-decoration-none">@uni.Website</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-info" role="alert">
+                Không có trường đại học nào phù hợp được tìm thấy.
+            </div>
+        }
+    </div>
+
+    <div class="action-buttons">
+        <a asp-controller="LearningPath" asp-action="Index" asp-route-dominantType="@Model.DominantType" class="btn btn-action btn-primary-custom">
+            <i class="bi bi-graph-up-arrow me-2"></i> Xem lộ trình học tập gợi ý
+        </a>
+        <a href="/CareerTest" class="btn btn-action btn-secondary-custom">
+            <i class="bi bi-arrow-repeat me-2"></i> Làm lại bài trắc nghiệm
+        </a>
+    </div>
+</div>

@@ -1,0 +1,75 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+/* Contact Section */
+.contact-info h5, .contact-form h5 {
+    font-weight: 600;
+}
+
+.contact-info p, .contact-form label {
+    font-size: 15px;
+}
+
+.contact-form input, .contact-form textarea {
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease-in-out;
+}
+
+    .contact-form input:focus, .contact-form textarea:focus {
+        border-color: #666;
+        box-shadow: 0 0 6px rgba(0,0,0,0.2);
+        outline: none;
+    }
+/* Banner gi?i thi?u */
+.about-banner {
+    position: relative;
+    height: 300px;
+    background: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+}
+
+    .about-banner .banner-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+/* Cách các section ra xa nhau */
+.container-home {
+    max-width: 1200px !important;
+    margin: auto !important;
+}
+
+.card-box {
+    background: rgba(255, 255, 255, 0.9) !important;
+    padding: 20px !important;
+    border-radius: 15px !important;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.2) !important;
+    margin-bottom: 30px !important;
+}
+
+section {
+    margin-bottom: 40px !important;
+}

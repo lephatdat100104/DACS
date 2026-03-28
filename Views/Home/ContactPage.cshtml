@@ -1,0 +1,150 @@
+﻿@{
+    ViewData["Title"] = "Liên hệ & Đăng ký";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- CTA -->
+<section class="position-relative text-white text-center py-5"
+         style="background: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80') no-repeat center/cover;">
+    <div class="overlay position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0,0,0,0.45);"></div>
+
+    <div class="container position-relative">
+        <h1 class="display-5 fw-bold mb-3">Bạn đã sẵn sàng khám phá bản thân chưa?</h1>
+        <p class="lead mb-4">Hệ thống sẽ đồng hành cùng bạn trên hành trình định hướng tương lai!</p>
+        <a href="/Account/Register" class="btn btn-lg px-5 fw-bold shadow"
+           style="background: linear-gradient(90deg,#00d4ff,#2c7be5); color:#fff; border-radius: 999px;">
+            Đăng ký tài khoản
+        </a>
+    </div>
+</section>
+
+<!-- Contact -->
+<section class="contact-section py-5" style="background: linear-gradient(180deg, #d0f0ff, #e3d4ff);">
+
+
+    <div class="container">
+        <h2 class="text-center mb-5 fw-bold">📍 Liên hệ với chúng tôi</h2>
+
+        <div class="row g-5">
+            <!-- Thông tin liên hệ -->
+            <div class="col-lg-5">
+                <div class="contact-card p-4 h-100">
+                    <div class="mb-4">
+                        <div class="icon-glass mb-3" style="background: linear-gradient(135deg,#ff5858,#f09819);">
+                            <i class="bi bi-geo-alt-fill fs-4"></i>
+                        </div>
+                        <h5 class="fw-bold mb-1">Địa chỉ</h5>
+                        <p class="mb-3">123 Đường ABC, Quận 1, TP.HCM</p>
+
+                        <div class="icon-glass mb-3" style="background: linear-gradient(135deg,#36d1dc,#5b86e5);">
+                            <i class="bi bi-envelope-fill fs-4"></i>
+                        </div>
+                        <h5 class="fw-bold mb-1">Email</h5>
+                        <p class="mb-3">support@huongnghiep.com</p>
+
+                        <div class="icon-glass mb-3" style="background: linear-gradient(135deg,#11998e,#38ef7d);">
+                            <i class="bi bi-telephone-fill fs-4"></i>
+                        </div>
+                        <h5 class="fw-bold mb-1">Điện thoại</h5>
+                        <p class="mb-0">0123 456 789</p>
+                    </div>
+
+                    <iframe class="rounded-4 shadow-sm"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.502209509919!2d106.70042331533462!3d10.774055992323996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529292d17d5a3%3A0x36a4c5e9c6b4f8cf!2zMTIzIMSQLiBBQkMsIFF14bqtbiAxLCBQaMO6IFRo4buNLCBUUC5IQ00!5e0!3m2!1svi!2s!4v1680000000000"
+                            width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+
+            <!-- Form liên hệ -->
+            <div class="col-lg-7">
+                <div class="contact-card p-4 h-100">
+                    <h5 class="mb-4 fw-bold">📨 Gửi tin nhắn cho chúng tôi</h5>
+                    <form asp-action="SendContact" method="post" novalidate>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-medium">Họ và tên</label>
+                                <input name="Name" type="text" class="form-control form-control-lg input-glass" placeholder="Nhập họ và tên">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-medium">Email</label>
+                                <input name="Email" type="email" class="form-control form-control-lg input-glass" placeholder="Nhập email">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label fw-medium">Chủ đề</label>
+                                <input name="Subject" type="text" class="form-control form-control-lg input-glass" placeholder="Chủ đề (VD: Hỗ trợ kỹ thuật)">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label fw-medium">Nội dung</label>
+                                <textarea name="Message" rows="6" class="form-control form-control-lg input-glass rounded-4" placeholder="Viết tin nhắn..."></textarea>
+                            </div>
+                            <div class="col-12 text-end">
+                                <button type="submit" class="btn btn-lg btn-submit fw-bold">
+                                    <i class="bi bi-send-fill me-2"></i> Gửi tin nhắn
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="mt-4 small text-muted">
+                        <strong>Thời gian hỗ trợ:</strong> T2–T6: 8:00 - 17:00 |
+                        <strong>Chat nhanh:</strong> <a href="/Chat/Index" class="link-primary">Mở Chatbot</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .contact-card {
+        background: rgba(255,255,255,0.10);
+        backdrop-filter: blur(14px) saturate(140%);
+        -webkit-backdrop-filter: blur(14px) saturate(140%);
+        border-radius: 18px;
+        border: 1px solid rgba(255,255,255,0.18);
+        box-shadow: 0 10px 30px rgba(22, 28, 37, 0.12);
+        transition: transform .28s ease, box-shadow .28s ease;
+    }
+
+        .contact-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 50px rgba(22, 28, 37, 0.18);
+        }
+
+    .icon-glass {
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .input-glass {
+        background: rgba(255,255,255,0.85);
+        border: none;
+        border-radius: 12px;
+        padding: .9rem 1rem;
+        color: #0f1724;
+        box-shadow: inset 0 1px 4px rgba(16,24,40,0.04);
+    }
+
+        .input-glass::placeholder {
+            color: #6b7280;
+        }
+
+    .btn-submit {
+        background: linear-gradient(90deg,#00d4ff,#2c7be5);
+        color: white;
+        border-radius: 999px;
+        padding: .75rem 1.6rem;
+        border: none;
+        box-shadow: 0 8px 20px rgba(44,123,229,0.18);
+    }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 34px rgba(44,123,229,0.22);
+        }
+</style>

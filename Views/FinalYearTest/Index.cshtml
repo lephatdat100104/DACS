@@ -1,0 +1,194 @@
+﻿@model List<DACS.Models.FinalYearQuestion>
+
+<style>
+    /* Header */
+    .quiz-header {
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+        color: white;
+        padding: 30px;
+        border-radius: 15px;
+        margin-bottom: 30px;
+        text-align: center;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+
+        .quiz-header h2 {
+            font-weight: 700;
+            font-size: 2rem;
+        }
+
+        .quiz-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+    /* Card câu hỏi */
+    .quiz-card {
+        border: none;
+        border-radius: 20px;
+        background: #fff;
+        transition: all 0.3s ease;
+        overflow: hidden;
+        padding: 20px;
+    }
+
+        .quiz-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+    /* Layout số + câu hỏi */
+    .question-header {
+        display: flex;
+        align-items: center;
+        gap: 15px; /* khoảng cách giữa số và câu hỏi */
+        margin-bottom: 15px;
+    }
+
+    /* Số thứ tự câu hỏi */
+    .question-number {
+        background: #2575fc;
+        color: white;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-weight: bold;
+        font-size: 1.1rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        flex-shrink: 0;
+    }
+
+    /* Nội dung câu hỏi */
+    .question-text {
+        font-weight: 600;
+        font-size: 1.15rem;
+        color: #333;
+    }
+
+    /* Label đáp án */
+    .form-check-label {
+        font-size: 1rem;
+        cursor: pointer;
+        transition: color 0.2s;
+    }
+
+        .form-check-label:hover {
+            color: #2575fc;
+        }
+
+    /* Radio button custom */
+    .form-check-input {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        border: 2px solid #2575fc;
+    }
+
+        .form-check-input:checked {
+            background-color: #2575fc;
+            border-color: #2575fc;
+        }
+
+    /* Progress bar */
+    .progress {
+        height: 20px;
+        border-radius: 15px;
+        overflow: hidden;
+        margin-bottom: 25px;
+    }
+
+    .progress-bar {
+        background: linear-gradient(90deg, #6a11cb, #2575fc);
+        font-weight: bold;
+    }
+
+    /* Nút submit */
+    .submit-btn {
+        font-size: 1.2rem;
+        font-weight: 600;
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+        border: none;
+        padding: 14px 45px;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        color: white;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    }
+
+        .submit-btn:hover {
+            transform: scale(1.07);
+            background: linear-gradient(135deg, #2575fc, #6a11cb);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+        }
+</style>
+
+<div class="container mt-4">
+    <!-- Header -->
+    <div class="quiz-header">
+        <h2>📝 Bài Test Dành Cho Sinh Viên Năm 3 & Năm Cuối</h2>
+        <p>Hãy chọn câu trả lời đúng nhất cho từng câu hỏi để kiểm tra kiến thức của bạn!</p>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 0%">0%</div>
+    </div>
+
+    <!-- Form -->
+    <form asp-action="Submit" method="post" class="p-2">
+        @{
+            var index = 1;
+        }
+        @foreach (var q in Model)
+        {
+            <div class="card quiz-card mb-4 shadow-sm">
+                <div class="question-header">
+                    <div class="question-number">@index</div>
+                    <div class="question-text">@q.Content</div>
+                </div>
+
+                <div class="ms-2 mt-2">
+                    @foreach (var ans in q.Answers)
+                    {
+                        <div class="form-check mb-2">
+                            <input class="form-check-input"
+                                   type="radio"
+                                   name="answers[@q.Id]"
+                                   value="@ans.Id"
+                                   required
+                                   onchange="updateProgress()" />
+                            <label class="form-check-label">
+                                @ans.Content
+                            </label>
+                        </div>
+                    }
+                </div>
+            </div>
+            index++;
+        }
+
+        <div class="text-center">
+            <button type="submit" class="submit-btn">
+                🚀 Nộp Bài Test
+            </button>
+        </div>
+    </form>
+</div>
+
+<script>
+    function updateProgress() {
+        let total = document.querySelectorAll(".quiz-card").length;
+        let answered = new Set();
+        document.querySelectorAll(".form-check-input:checked").forEach(el => {
+            let group = el.name;
+            answered.add(group);
+        });
+        let percent = Math.floor((answered.size / total) * 100);
+        let bar = document.querySelector(".progress-bar");
+        bar.style.width = percent + "%";
+        bar.innerText = percent + "%";
+    }
+</script>

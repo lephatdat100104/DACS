@@ -1,0 +1,144 @@
+﻿@model List<DACS.Models.ChatHistory>
+
+@{
+    ViewData["Title"] = "Lịch sử trò chuyện";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    :root {
+        --primary-color: #007bff; /* Blue */
+        --secondary-color: #6c757d; /* Gray */
+        --text-color: #333;
+        --bg-color: #f0f2f5;
+        --card-bg: #fff;
+        --shadow-light: rgba(0, 0, 0, 0.1);
+    }
+
+    body {
+        background-color: var(--bg-color);
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .history-wrapper {
+        max-width: 1200px;
+        margin: 50px auto;
+        padding: 40px;
+        background-color: var(--card-bg);
+        border-radius: 25px;
+        box-shadow: 0 15px 40px var(--shadow-light);
+    }
+
+    .history-header {
+        text-align: center;
+        margin-bottom: 40px;
+        position: relative;
+    }
+
+        .history-header h2 {
+            font-weight: 700;
+            color: var(--text-color);
+            position: relative;
+            display: inline-block;
+        }
+
+            .history-header h2::after {
+                content: '';
+                display: block;
+                width: 60%;
+                height: 4px;
+                background-color: var(--primary-color);
+                margin: 8px auto 0;
+                border-radius: 2px;
+            }
+
+    .back-button {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .table-container {
+        border-radius: 15px;
+        overflow: hidden;
+        border: 1px solid #e9ecef;
+    }
+
+    .custom-table {
+        background-color: var(--card-bg);
+        margin-bottom: 0;
+    }
+
+        .custom-table thead th {
+            background-color: var(--primary-color);
+            color: #fff;
+            font-weight: 600;
+            border: none;
+            vertical-align: middle;
+            padding: 1rem;
+        }
+
+        .custom-table tbody tr {
+            transition: background-color 0.2s ease;
+        }
+
+            .custom-table tbody tr:hover {
+                background-color: #e9ecef;
+            }
+
+        .custom-table td {
+            padding: 1rem;
+            vertical-align: top;
+            border-top: 1px solid #dee2e6;
+        }
+
+    .alert-custom {
+        padding: 20px;
+        border-radius: 15px;
+        background-color: #e9f5ff; /* Light blue */
+        border-color: #cce5ff;
+        color: #004085;
+    }
+</style>
+
+<div class="history-wrapper">
+    <div class="history-header">
+        <a href="/Chat" class="btn btn-outline-secondary back-button">
+            <i class="bi bi-arrow-left me-2"></i> Quay lại
+        </a>
+        <h2>🕓 Lịch sử trò chuyện</h2>
+    </div>
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="table-container">
+            <div class="table-responsive">
+                <table class="table custom-table table-striped">
+                    <thead>
+                        <tr class="text-center">
+                            <th style="width: 20%;">🕒 Thời gian</th>
+                            <th style="width: 35%;">❓ Câu hỏi</th>
+                            <th>💬 Câu trả lời</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="text-center">@item.Timestamp.ToString("dd/MM/yyyy HH:mm")</td>
+                                <td>@item.Question</td>
+                                <td>@item.Answer</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info alert-custom text-center">
+            Bạn chưa có lịch sử trò chuyện nào!
+        </div>
+    }
+</div>

@@ -1,0 +1,62 @@
+﻿@model List<DACS.Models.FAQ>
+
+<h2>Quản lý FAQ</h2>
+
+<!-- Form thêm FAQ -->
+<form asp-action="AddFAQ" method="post" class="mb-3">
+    <div class="row g-2">
+        <div class="col">
+            <input type="text" name="question" class="form-control" placeholder="Câu hỏi" required />
+        </div>
+        <div class="col">
+            <input type="text" name="answer" class="form-control" placeholder="Câu trả lời" required />
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">Thêm FAQ</button>
+        </div>
+    </div>
+</form>
+
+@if (ViewBag.Success != null)
+{
+    <div class="alert alert-success">@ViewBag.Success</div>
+}
+
+<!-- Bảng thống kê FAQ -->
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Câu hỏi</th>
+            <th>Câu trả lời</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var faq in Model)
+        {
+            <tr>
+                <td>@faq.Id</td>
+                <td>
+                    <input type="text" form="editForm-@faq.Id" name="question" value="@faq.Question" class="form-control" />
+                </td>
+                <td>
+                    <input type="text" form="editForm-@faq.Id" name="answer" value="@faq.Answer" class="form-control" />
+                </td>
+                <td>
+                    <form id="editForm-@faq.Id" asp-action="EditFAQ" method="post" class="d-inline">
+                        <input type="hidden" name="id" value="@faq.Id" />
+                        <button type="submit" class="btn btn-sm btn-warning">Sửa</button>
+                    </form>
+                    <form asp-action="DeleteFAQ" method="post" class="d-inline ms-1">
+                        <input type="hidden" name="id" value="@faq.Id" />
+                        <button type="submit" class="btn btn-sm btn-danger"
+                                onclick="return confirm('Xác nhận xóa?')">
+                            Xóa
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

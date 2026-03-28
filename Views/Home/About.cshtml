@@ -1,0 +1,197 @@
+﻿@{
+    ViewData["Title"] = "Giới thiệu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Banner -->
+<section class="about-banner text-white text-center d-flex align-items-center justify-content-center position-relative mb-0">
+    <div class="banner-overlay"></div>
+    <div class="container position-relative" data-aos="fade-up">
+        <h1 class="display-4 fw-bold mb-3 gradient-text">Khám Phá Tương Lai Của Bạn</h1>
+        <p class="lead">Công nghệ hướng nghiệp tiên tiến giúp bạn chọn đúng nghề – vững bước vào tương lai</p>
+    </div>
+</section>
+
+<!-- Story -->
+<section class="py-5 bg-light" style="margin-top:0;">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6" data-aos="fade-right">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80"
+                     alt="Giới thiệu" class="intro-image img-fluid rounded shadow" />
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <h2 class="fw-bold mb-4">Chúng tôi làm gì?</h2>
+                <p class="text-muted mb-4">
+                    Hệ thống hướng nghiệp thông minh cung cấp các công cụ hiện đại giúp bạn hiểu rõ điểm mạnh, sở thích và cơ hội nghề nghiệp phù hợp.
+                </p>
+                <ul class="list-unstyled">
+                    <li class="mb-3"><i class="bi bi-lightning-charge-fill text-warning me-2"></i>Trắc nghiệm tính cách & năng lực</li>
+                    <li class="mb-3"><i class="bi bi-chat-dots-fill text-info me-2"></i>Tư vấn nghề nghiệp với AI 24/7</li>
+                    <li class="mb-3"><i class="bi bi-bar-chart-line-fill text-success me-2"></i>Lộ trình học tập cá nhân hóa</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features -->
+<section class="py-6">
+    <div class="container">
+        <h2 class="section-title text-center fw-bold mb-5" data-aos="fade-up">
+            <span>Điểm Khác Biệt Của Chúng Tôi</span>
+        </h2>
+        <div class="row g-4">
+            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+                <div class="feature-card p-4 text-center">
+                    <div class="icon-circle bg-gradient-primary mx-auto mb-3">
+                        <i class="bi bi-robot fs-2 text-white"></i>
+                    </div>
+                    <h5 class="fw-bold mb-2">AI Hiện Đại</h5>
+                    <p class="text-muted">Sử dụng trí tuệ nhân tạo để phân tích và gợi ý nghề nghiệp chuẩn xác.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+                <div class="feature-card p-4 text-center">
+                    <div class="icon-circle bg-gradient-success mx-auto mb-3">
+                        <i class="bi bi-mortarboard fs-2 text-white"></i>
+                    </div>
+                    <h5 class="fw-bold mb-2">Học Tập Cá Nhân Hóa</h5>
+                    <p class="text-muted">Lộ trình học tập thiết kế riêng cho từng cá nhân, phù hợp năng lực và mục tiêu.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
+                <div class="feature-card p-4 text-center">
+                    <div class="icon-circle bg-gradient-warning mx-auto mb-3">
+                        <i class="bi bi-globe-americas fs-2 text-white"></i>
+                    </div>
+                    <h5 class="fw-bold mb-2">Cơ Hội Toàn Cầu</h5>
+                    <p class="text-muted">Kết nối cơ hội học tập và làm việc tại nhiều quốc gia trên thế giới.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Video & Quote -->
+<section class="py-6 bg-dark text-white">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6" data-aos="fade-right">
+                <div class="ratio ratio-16x9 rounded shadow">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video Giới Thiệu" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <blockquote class="blockquote">
+                    <p class="fs-4">"Chọn đúng nghề, bạn sẽ không phải làm việc một ngày nào trong đời."</p>
+                    <footer class="blockquote-footer text-white-50">Confucius</footer>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Banner */
+    .about-banner {
+        height: 400px;
+        background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80') no-repeat center/cover;
+    }
+
+    .banner-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,0.5);
+    }
+
+    /* Text Gradient */
+    .gradient-text {
+        background: linear-gradient(90deg,#00d4ff,#2c7be5);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    /* Section spacing */
+    section + section {
+        margin-top: 80px; /* Khoảng cách giữa các section */
+    }
+
+    /* Icon circle style */
+    .icon-circle {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+        transition: transform 0.3s ease;
+        cursor: default;
+    }
+
+        .icon-circle:hover {
+            transform: scale(1.1);
+        }
+
+    /* Background gradients */
+    .bg-gradient-primary {
+        background: linear-gradient(135deg,#00d4ff,#2c7be5);
+    }
+
+    .bg-gradient-success {
+        background: linear-gradient(135deg,#4ade80,#16a34a);
+    }
+
+    .bg-gradient-warning {
+        background: linear-gradient(135deg,#facc15,#eab308);
+    }
+
+    /* Feature card */
+    .feature-card {
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+        }
+
+    /* Intro image */
+    .intro-image {
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .intro-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+    /* Remove margin bottom for banner */
+    .about-banner {
+        margin-bottom: 0;
+    }
+
+    /* Padding top for light background section */
+    .bg-light {
+        padding-top: 40px;
+    }
+
+
+</style>
+
+@section Scripts {
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 900,
+            once: true
+        });
+    </script>
+}

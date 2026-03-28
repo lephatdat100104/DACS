@@ -1,0 +1,153 @@
+﻿@{
+    ViewData["Title"] = "Trang chủ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Banner -->
+<section class="position-relative overflow-hidden">
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=1400&q=80"
+                     class="d-block w-100" style="height: 500px; object-fit: cover;" alt="Slide 1">
+            </div>
+            <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1400&q=80"
+                     class="d-block w-100" style="height: 500px; object-fit: cover;" alt="Slide 2">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+    </div>
+
+    <div class="position-absolute top-50 start-50 translate-middle text-center text-white glass-bg p-4 rounded">
+        <h1 class="display-4 fw-bold gradient-text mb-3 typewriter">🎓 Hệ thống hướng nghiệp thông minh</h1>
+        <p class="lead fs-5">Khám phá bản thân, chọn đúng nghề, vững bước tương lai.</p>
+        <a href="/CareerTest/Index" class="btn btn-lg btn-success fw-bold mt-3 shadow">🧪 Làm trắc nghiệm nghề nghiệp</a>
+    </div>
+</section>
+
+<!-- Features -->
+<!-- Features -->
+<!-- Features -->
+<section class="py-5" style="background: transparent;">
+    <div class="container">
+        <div class="row g-5 justify-content-center">
+
+            <!-- Feature 1 -->
+            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+                <div class="feature-card text-center p-5 shadow-lg rounded-4">
+                    <div class="icon-wrapper mb-4" style="background: linear-gradient(135deg, #6dd5fa, #2980b9);">
+                        🤖
+                    </div>
+                    <h4 class="fw-bold mb-3">Chatbot tư vấn nghề</h4>
+                    <p class="text-muted">Trò chuyện với AI để được định hướng ngành học & nghề nghiệp.</p>
+                    <a href="/Chat/Index" class="btn btn-primary fw-bold px-4 mt-3">Trải nghiệm Chatbot</a>
+                </div>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+                <div class="feature-card text-center p-5 shadow-lg rounded-4">
+                    <div class="icon-wrapper mb-4" style="background: linear-gradient(135deg, #a8e063, #56ab2f);">
+                        📊
+                    </div>
+                    <h4 class="fw-bold mb-3">Kết quả trắc nghiệm</h4>
+                    <p class="text-muted">Xem lại kết quả, so sánh với lộ trình học phù hợp.</p>
+                    <a href="/CareerTest/Index" class="btn btn-success fw-bold px-4 mt-3">Làm bài ngay</a>
+                </div>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
+                <div class="feature-card text-center p-5 shadow-lg rounded-4">
+                    <div class="icon-wrapper mb-4" style="background: linear-gradient(135deg, #89f7fe, #66a6ff);">
+                        📘
+                    </div>
+                    <h4 class="fw-bold mb-3">Lộ trình học tập</h4>
+                    <p class="text-muted">Gợi ý các ngành học, trường học phù hợp với bạn.</p>
+                    <a href="/LearningPath/Index" class="btn btn-info fw-bold px-4 mt-3">Xem lộ trình</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<style>
+    .feature-card {
+        background: white;
+        transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.04);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+    .icon-wrapper {
+        width: 90px;
+        height: 90px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-size: 2.5rem;
+        color: white;
+        margin: 0 auto;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+</style>
+
+<!-- AOS Animation -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 900,
+        once: true
+    });
+</script>
+
+
+<style>
+    .icon-circle {
+        width: 70px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-size: 2rem;
+        margin: 0 auto;
+    }
+
+    .shadow-lg {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .shadow-lg:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+        }
+</style>
+
+
+<!-- Nút sang trang 2 -->
+<div class="text-center my-5">
+    <a href="/Home/ContactPage" class="btn btn-primary btn-lg px-5 py-3">📍 Xem thông tin & Liên hệ</a>
+</div>
+
+@section Scripts {
+    <script>
+        const myCarouselElement = document.querySelector('#heroCarousel');
+        const carousel = new bootstrap.Carousel(myCarouselElement, {
+            interval: 4000,
+            ride: 'carousel'
+        });
+    </script>
+}

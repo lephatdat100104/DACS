@@ -1,0 +1,17 @@
+﻿@model IEnumerable<DACS.Models.LearningPathStep>
+
+@{
+    ViewData["Title"] = "Lộ trình học tập";
+}
+
+<h2>Lộ trình học tập: @ViewBag.DominantType</h2>
+
+@foreach (var step in Model)
+{
+    <div class="card mb-2">
+        <div class="card-body">
+            <h5>@step.YearStage</h5>
+            <p>@step.Content</p>
+        </div>
+    </div>
+}

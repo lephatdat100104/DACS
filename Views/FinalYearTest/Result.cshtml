@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kết quả bài test</title>
+    <style>
+
+
+        :root {
+            --primary-color: #6a11cb;
+            --secondary-color: #2575fc;
+            --background-color: #f4f7fc;
+            --card-background: #ffffff;
+            --text-color: #333;
+            --light-text-color: #777;
+            --success-color: #10b981;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--background-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .result-container {
+            display: flex;
+            background: var(--card-background);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            overflow: hidden;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .left-panel {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 40px;
+            text-align: center;
+            flex-basis: 40%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+            .left-panel h3 {
+                margin: 0 0 10px 0;
+                font-weight: 600;
+            }
+
+        .score-display {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .score-value {
+            font-size: 56px;
+            font-weight: 700;
+        }
+
+        .score-max {
+            font-size: 16px;
+            opacity: 0.8;
+        }
+
+        .left-panel .feedback {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .left-panel .rank-info {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .right-panel {
+            padding: 40px;
+            flex-basis: 60%;
+        }
+
+            .right-panel h2 {
+                color: var(--text-color);
+                margin-top: 0;
+                margin-bottom: 25px;
+            }
+
+        .summary-item {
+            margin-bottom: 25px;
+        }
+
+            .summary-item .label {
+                font-weight: 600;
+                color: var(--text-color);
+                margin-bottom: 10px;
+                display: flex;
+                align-items: center;
+            }
+
+                .summary-item .label svg {
+                    margin-right: 8px;
+                }
+
+            .summary-item .value {
+                font-size: 16px;
+                color: var(--light-text-color);
+                line-height: 1.7;
+            }
+
+        .progress-bar-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 25px;
+            height: 20px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            width: @Model.TotalScore %;
+            height: 100%;
+            background: linear-gradient(90deg, var(--success-color), #5eead4);
+            border-radius: 25px;
+            transition: width 0.5s ease-in-out;
+        }
+
+        .action-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+            .action-button:hover {
+                transform: scale(1.05);
+                box-shadow: 0 10px 20px rgba(37, 117, 252, 0.3);
+            }
+
+    </style>
+</head>
+<body>
+
+    <div class="result-container">
+        <div class="left-panel">
+            <h3>Kết quả của bạn</h3>
+            <div class="score-display">
+                <span class="score-value">@Model.TotalScore</span>
+                <span class="score-max">trên 100</span>
+            </div>
+            <p class="feedback">Tuyệt vời!</p>
+            <p class="rank-info">Bạn đã làm tốt hơn 65% các bạn khác.</p>
+        </div>
+        <div class="right-panel">
+            <h2>Tóm tắt kết quả</h2>
+
+            <div class="summary-item">
+                <p class="label">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    Tổng điểm
+                </p>
+                <div class="progress-bar-container">
+                    <div class="progress-bar"></div>
+                </div>
+            </div>
+
+            <div class="summary-item">
+                <p class="label">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 2v6h6M21.5 22v-6h-6" /><path d="M22 11.5A10 10 0 0 0 3.5 12.5" /><path d="M2 12.5a10 10 0 0 0 18.5-1" /></svg>
+                    Gợi ý
+                </p>
+                <p class="value">@Model.Recommendation</p>
+            </div>
+
+            <a href="@Url.Action("Index", "FinalYearTest")" class="action-button">Làm lại bài test</a>
+        </div>
+    </div>
+
+</body>
+</html>

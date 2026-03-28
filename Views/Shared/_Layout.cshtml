@@ -1,0 +1,230 @@
+﻿@using System.Security.Claims
+@{
+    var role = User.FindFirst(ClaimTypes.Role)?.Value;
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - DACS</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/DACS.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+
+    <style>
+        body {
+            background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            position: relative;
+            z-index: 0;
+        }
+
+            body::before {
+                content: "";
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(255, 255, 255, 0.2);
+                z-index: -1;
+            }
+
+        .content-box {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Modern Navbar Styling */
+        .modern-navbar {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: saturate(180%) blur(10px);
+            border-radius: 15px;
+            margin-top: 15px;
+            padding: 10px 25px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            transition: background-color 0.3s ease;
+        }
+
+            .modern-navbar:hover {
+                background: rgba(255, 255, 255, 0.95);
+            }
+
+            .modern-navbar .nav-link {
+                font-weight: 600;
+                font-size: 1.05rem;
+                color: #444 !important;
+                padding: 8px 15px;
+                border-radius: 10px;
+                position: relative;
+                transition: color 0.25s ease, background-color 0.25s ease, transform 0.2s ease;
+            }
+
+                .modern-navbar .nav-link:hover {
+                    color: #0d6efd !important;
+                    background-color: rgba(13, 110, 253, 0.1);
+                    transform: translateY(-3px);
+                    text-shadow: 0 0 5px rgba(13,110,253,0.4);
+                }
+
+                .modern-navbar .nav-link.active {
+                    color: #0d6efd !important;
+                    background-color: rgba(13, 110, 253, 0.2);
+                    font-weight: 700;
+                    box-shadow: 0 0 8px rgba(13,110,253,0.6);
+                    cursor: default;
+                    transform: translateY(-2px);
+                }
+
+            .modern-navbar .navbar-brand {
+                font-weight: 900;
+                font-size: 2rem;
+                color: #0d6efd !important;
+                letter-spacing: 1px;
+                text-shadow: 0 0 6px rgba(13,110,253,0.7);
+                transition: color 0.3s ease;
+            }
+
+                .modern-navbar .navbar-brand:hover {
+                    color: #0b5ed7 !important;
+                }
+
+            .modern-navbar .btn-outline-primary {
+                border-width: 2px;
+                font-weight: 600;
+                transition: all 0.3s ease;
+            }
+
+                .modern-navbar .btn-outline-primary:hover {
+                    background-color: #0d6efd;
+                    color: #fff !important;
+                    border-color: #0d6efd;
+                    box-shadow: 0 0 8px #0d6efd;
+                }
+
+            .modern-navbar .btn-primary {
+                font-weight: 600;
+                box-shadow: 0 0 10px #0d6efd;
+                transition: all 0.3s ease;
+            }
+
+                .modern-navbar .btn-primary:hover {
+                    background-color: #0b5ed7;
+                    box-shadow: 0 0 14px #0b5ed7;
+                }
+
+        /* Responsive spacing */
+        .navbar-nav {
+            gap: 1rem;
+        }
+
+        @@media (max-width: 991px) {
+            .navbar-nav
+
+        {
+            gap: 0.5rem !important;
+        }
+
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light modern-navbar mx-4 shadow-sm">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">DACS</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse d-lg-flex justify-content-between" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link @((ViewContext.RouteData.Values["action"]?.ToString() == "Index" && ViewContext.RouteData.Values["controller"]?.ToString() == "Home") ? "active" : "")"
+                               asp-controller="Home" asp-action="Index">Trang chủ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "Chat") ? "active" : "")"
+                               asp-controller="Chat" asp-action="Index">Chatbot</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "CareerTest") ? "active" : "")"
+                               asp-controller="CareerTest" asp-action="Index"> Trắc nghiệm nghề nghiệp</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="FinalYearTest" asp-action="Index">Test định hướng nghề nghiệp</a>
+                        </li>
+
+                        @if (User.Identity.IsAuthenticated && role == "admin")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link @((ViewContext.RouteData.Values["action"]?.ToString() == "AdminHistory" && ViewContext.RouteData.Values["controller"]?.ToString() == "Chat") ? "active" : "")"
+                                   asp-controller="Chat" asp-action="AdminHistory">Lịch sử người dùng</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "User") ? "active" : "")"
+                                   asp-controller="User" asp-action="Index">Quản lý tài khoản</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Statistics/CareerTestSummary">Thống kê nghề nghiệp</a>
+                            </li>
+                            <!-- ✅ Link mới: Quản lý FAQ -->
+                            <li class="nav-item">
+                                <a class="nav-link @(ViewContext.RouteData.Values["action"]?.ToString() == "FAQ" ? "active" : "")"
+                                   asp-controller="Admin" asp-action="FAQ">Quản lý FAQ</a>
+                            </li>
+                        }
+                    </ul>
+
+                    <ul class="navbar-nav ms-auto align-items-lg-center">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item me-3">
+                                <span class="nav-link text-success fw-bold">Xin chào, @User.Identity.Name!</span>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-outline-danger rounded-pill px-4" asp-controller="Account" asp-action="Logout">Đăng xuất</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item me-3">
+                                <a class="nav-link fw-semibold text-secondary" asp-controller="Home" asp-action="About">
+                                    <i class="bi bi-info-circle me-1"></i> Giới thiệu
+                                </a>
+                            </li>
+                            <li class="nav-item me-2">
+                                <a class="btn btn-outline-primary rounded-pill px-4" asp-controller="Account" asp-action="Login">Đăng nhập</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-primary rounded-pill px-4" asp-controller="Account" asp-action="Register">Đăng ký</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container mt-4">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
